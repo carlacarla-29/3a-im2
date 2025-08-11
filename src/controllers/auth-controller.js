@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
-  //   validation
+  //   promise
   let errors = [];
   if (!name) errors.push({ field: name, message: "name is required" });
   if (!email) errors.push({ field: email, message: "email is required" });
@@ -38,7 +38,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
 
-  // Validation
+  
   let errors = [];
   if (!email) errors.push({ field: "email", message: "email is required" });
   if (!password) errors.push({ field: "password", message: "password is required" });
@@ -56,7 +56,7 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // Login successful - return user info (without password)
+    // succesful log in sha
     res.status(200).json({
       message: "Login successful",
       user: {
